@@ -1,14 +1,22 @@
 import React from 'react';
+import styled from 'styled-components';
 import logo from './bmw.svg';
 import './App.css';
 import Switch from "react-switch";
 import DaysOfWeek from './controls/DaysOfWeek';
 import HoursOfDay from './controls/HoursOfDay';
 
+const StatusLabel = styled.div`
+  text-align: center;
+  color: white;
+  font-size: 12px;
+  line-height: 30px;
+`;
+
 class App extends React.Component {
   state = {
     enabled: false,
-    daysOfWeek: [],
+    daysOfWeek: [0, 2, 5],
     time: [8, 0]
   }
   onChange = (field, value) => {
@@ -23,8 +31,7 @@ class App extends React.Component {
             <img src={logo} className="App-logo" alt="logo" />
             <div style={{ width: 20 }}>&nbsp;</div>
             <div>
-              Status:
-              <br />
+              <StatusLabel>STATUS</StatusLabel>
               <Switch 
                 checked={enabled} 
                 onChange={value => (this.onChange('enabled', value))}

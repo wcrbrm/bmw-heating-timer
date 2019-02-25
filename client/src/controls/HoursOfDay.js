@@ -16,6 +16,11 @@ const InActiveWrapper = styled.button`
     cursor: pointer;
     &:hover { color: #fff; background: #333; }
 `;
+const Semi = styled.span`
+    color: #aaa;
+    margin-left: 3px;
+    margin-right: 3px;
+`;
 
 const pad2 = x => ((x >= 10) ? x : ('0' + x));
 
@@ -37,7 +42,7 @@ class HoursOfDay extends React.Component {
         if (!editing) {
             return (
                 <InActiveWrapper onClick={() => this.startEditing()}>
-                    {pad2(hour)} : {pad2(minute)}
+                    {pad2(hour)}<Semi>:</Semi>{pad2(minute)}
                 </InActiveWrapper>
             );
         }
@@ -45,7 +50,7 @@ class HoursOfDay extends React.Component {
             <ActiveWrapper>
                 <Esc onPress={() => this.stopEditing()} />
                 <div>
-                    {pad2(hour)} : {pad2(minute)}
+                    {pad2(hour)}<Semi>:</Semi>{pad2(minute)}
                 </div>
             </ActiveWrapper>
         )
