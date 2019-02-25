@@ -1,11 +1,6 @@
 import React from 'react';
-import styled from 'styled-components';
-
-const Clock = styled.div`
-    width: 300px;
-    height: 300px;
-    border: 1px #a00 solid;
-`;
+// import styled from 'styled-components';
+import { Clock } from './Clock';
 
 const HourSelector = ({ value, onChange }) => {
     return (

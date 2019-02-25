@@ -1,14 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 import Esc from './Esc';
-import HourSelector from './HourSelector';
-import MinuteSelector from './MinuteSelector';
+import { HourSelector, MinuteSelector } from './clock';
 
 const ActiveWrapper = styled.div`
-    background: #334;
+    background: transparent;
     margin: 5px;
 `;
-const InActiveWrapper = styled.button`
+const InActiveWrapper = styled.div`
     background: transparent;
     border: none;
     color: #eee;
