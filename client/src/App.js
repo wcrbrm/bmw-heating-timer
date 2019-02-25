@@ -15,8 +15,8 @@ const StatusLabel = styled.div`
 
 class App extends React.Component {
   state = {
-    enabled: false,
-    daysOfWeek: [0, 2, 5],
+    enabled: true,
+    daysOfWeek: [1, 2, 3, 4, 5],
     time: [8, 0]
   }
   onChange = (field, value) => {
@@ -29,7 +29,7 @@ class App extends React.Component {
       <div className="App">
         <header className="App-header">
             <img src={logo} className="App-logo" alt="logo" />
-            <div style={{ width: 20 }}>&nbsp;</div>
+            <div style={{ width: 40 }}>&nbsp;</div>
             <div>
               <StatusLabel>STATUS</StatusLabel>
               <Switch 
@@ -39,10 +39,12 @@ class App extends React.Component {
             </div>
         </header>
         <DaysOfWeek 
+            enabled={enabled}
             value={daysOfWeek}
             onChange={value => (this.onChange('daysOfWeek', value))}
         />
-        <HoursOfDay 
+        <HoursOfDay
+            enabled={enabled || daysOfWeek.length === 0}
             value={time}
             onChange={value => (this.onChange('time', value))}
         />

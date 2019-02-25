@@ -13,18 +13,21 @@ const Day = styled.button`
     border-radius: 4px;
     background: #000;
     margin: 5px;
-    font-size: 12px;
+    font-size: 14px;
     outline: none !important;
     cursor: pointer;
     padding-top: 3px;
     padding-bottom: 3px;
+    &.disabled { background: #222; color: #ccc; }
+
     &.active { background: darkgreen; color: white; }
+    &.active.disabled { background: #555; color: #ccc; }
 `;
 
 const dow = ["Søn", "Man", "Tir", "Ons", "Tor", "Fre", "Lør"];
 class DaysOfWeek extends React.Component {
     render() {
-        const { value, onChange } = this.props;
+        const { enabled, value, onChange } = this.props;
         const isActive = d => (value.indexOf(d) > -1);
         const onToggle = d => {
             const index = value.indexOf(d);
@@ -38,14 +41,14 @@ class DaysOfWeek extends React.Component {
                 newval.push(d);
                 onChange(newval);
             }
-          
         }
+        const enabledClass = enabled ? '' : 'disabled ';
         return (
             <DayWrapper>
                 {dow.map((name, d) => (
                     <Day
-                        onClick={() => (onToggle(d))} 
-                        className={isActive(d) ? 'active' : ''} 
+                        onClick={() => (enabled && onToggle(d))} 
+                        className={enabledClass + (isActive(d) ? 'active'  : '')} 
                         key={name}
                     >
                         {name}
