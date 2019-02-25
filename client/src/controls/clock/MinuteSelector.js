@@ -1,6 +1,5 @@
 import React from 'react';
-// import styled from 'styled-components';
-import { Clock } from './Clock';
+import { Clock, Arrow, Digit } from './Clock';
 
 const minutes = [
     "00", "05", "10", "15", "20", "25", 
@@ -9,12 +8,14 @@ const minutes = [
 
 // 1) draw line to the current minute
 // 2) draw circle at the current minute
-// 3) draw labels
+// 3) draw labels (iterate minutes)
 const MinuteSelector = ({ value, onChange }) => {
-    const on = console.log
+    const a = 0; // todo: from value
+    const r = 250; // todo: 
     return (
-        <Clock onCoord={on}>
-            Minute: {value}
+        <Clock onCoord={({angle, radius}) => (console.log('a=', angle, 'r=', radius))}>
+            <Arrow {...{a, r}} />
+            {minutes.map((value, angleIndex) => <Digit {...{value, angleIndex, key: value, r }} />)}
         </Clock>
     );
 }

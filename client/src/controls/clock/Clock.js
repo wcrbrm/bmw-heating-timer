@@ -42,7 +42,7 @@ const DigitDiv = styled.div`
     color: white;
     z-index: 2;
 `;
-export const Digit = ({ size = 300, value, angle, radius }) => (
+export const Digit = ({ size = 300, value, angleIndex, r }) => (
     <DigitDiv>
         {value}
     </DigitDiv>
