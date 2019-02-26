@@ -48,7 +48,6 @@ class App extends React.Component {
             value={time}
             onChange={value => (this.onChange('time', value))}
         />
-        <pre>{JSON.stringify(this.state, null, 2)}</pre>
       </div>
     );
   }

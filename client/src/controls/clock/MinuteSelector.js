@@ -6,16 +6,15 @@ const minutes = [
     "30", "35", "40", "45", "50", "55"
 ];
 
-// 1) draw line to the current minute
-// 2) draw circle at the current minute
 // 3) draw labels (iterate minutes)
 const MinuteSelector = ({ value, onChange }) => {
-    const a = 0; // todo: from value
-    const r = 250; // todo: 
+    const r = 125; 
+    const negate = x => ((x < 0) ? 60 + x : x);
+    const getMinuteFromAngle = (angle) => (negate(parseInt((angle - 2*Math.PI) * 60 / 360, 10)))
     return (
-        <Clock onCoord={({angle, radius}) => (console.log('a=', angle, 'r=', radius))}>
-            <Arrow {...{a, r}} />
-            {minutes.map((value, angleIndex) => <Digit {...{value, angleIndex, key: value, r }} />)}
+        <Clock onCoord={({ angle }) => (onChange(getMinuteFromAngle(angle)))}>
+            <Arrow {...{angleIndex: value, r}} />
+            {minutes.map((value, min) => <Digit {...{value, angleIndex: min*5, key: value, r }} />)}
         </Clock>
     );
 }
