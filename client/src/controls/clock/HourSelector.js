@@ -24,7 +24,7 @@ const HourSelector = ({ value, onChange }) => {
 
     return (
         <Clock onCoord={({ angle, radius }) => (onChange(getHourFromAngle(angle, radius)))}>
-            <Arrow {...{angleIndex, r: (value < 12) ? r1 : r2}} />
+            <Arrow {...{angleIndex, angleDiv: 12, r: (value < 12) ? r1 : r2}} />
             {hours12.map((value, angleIndex) => <Digit {...{value, angleIndex, key: value, r: r1 }} />)}
             {hours24.map((value, angleIndex) => <Digit {...{value, angleIndex, key: value, r: r2 }} />)}
         </Clock>

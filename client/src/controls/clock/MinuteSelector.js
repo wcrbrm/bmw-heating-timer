@@ -13,8 +13,8 @@ const MinuteSelector = ({ value, onChange }) => {
     const getMinuteFromAngle = (angle) => (negate(parseInt((angle - 2*Math.PI) * 60 / 360, 10)))
     return (
         <Clock onCoord={({ angle }) => (onChange(getMinuteFromAngle(angle)))}>
-            <Arrow {...{angleIndex: value, r}} />
-            {minutes.map((value, min) => <Digit {...{value, angleIndex: min*5, key: value, r }} />)}
+            <Arrow {...{angleDiv: 60, angleIndex: value, r}} />
+            {minutes.map((value, min) => <Digit {...{value, angleIndex: min*5, angleDiv: 60, key: value, r }} />)}
         </Clock>
     );
 }

@@ -6,6 +6,7 @@ import { HourSelector, MinuteSelector } from './clock';
 const ActiveWrapper = styled.div`
     background: transparent;
     margin: 5px;
+    user-select: none;
 `;
 const InActiveWrapper = styled.div`
     background: transparent;
@@ -23,6 +24,7 @@ const Semi = styled.span`
     color: #aaa;
     margin-left: 3px;
     margin-right: 3px;
+    user-select: none;
     &.preview {
         font-size: 48px; line-height: 48px;
     }
@@ -36,6 +38,7 @@ const ModeButton = styled.button`
     padding: 15px;
     cursor: pointer;
     outline: none !important;
+    user-select: none;
     &.preview {
         font-size: 48px; line-height: 48px;
     }
