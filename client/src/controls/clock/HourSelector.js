@@ -21,7 +21,7 @@ const HourSelector = ({ value, onChange }) => {
     const negate = x => ((x < 0) ? 12 + x : x);
     const getHourFromAngle = (angle, radius) => {
         const plus12 = (radius <= r2 + 20) ? 12 : 0
-        return plus12 + (negate(parseInt((angle - 2*Math.PI) * 12 / 360, 10))) % 12;
+        return plus12 + (negate(Math.round((angle - 2*Math.PI) * 12 / 360))) % 12;
     }
     return (
         <Clock onCoord={({ angle, radius }) => (onChange(getHourFromAngle(angle, radius)))}>

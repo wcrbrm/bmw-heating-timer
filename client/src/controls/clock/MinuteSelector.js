@@ -6,11 +6,10 @@ const minutes = [
     "30", "35", "40", "45", "50", "55"
 ];
 
-// 3) draw labels (iterate minutes)
 const MinuteSelector = ({ value, onChange }) => {
     const r = 125; 
     const negate = x => ((x < 0) ? 60 + x : x);
-    const getMinuteFromAngle = (angle) => (negate(parseInt((angle - 2*Math.PI) * 60 / 360, 10)))
+    const getMinuteFromAngle = (angle) => (negate(Math.round((angle - 2*Math.PI) * 60 / 360)))
     return (
         <Clock onCoord={({ angle }) => (onChange(getMinuteFromAngle(angle)))}>
             <Arrow {...{angleDiv: 60, angleIndex: value, r}} />
