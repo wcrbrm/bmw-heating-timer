@@ -14,7 +14,7 @@ const hours24 = [
 // 2) draw circle at the current hour (use angle, radius)
 // 3) draw labels on bigger radius (iterate hours 12 - 11)
 // 3) draw labels on smaller radius (iterate hours 00 - 23)
-const HourSelector = ({ value, onChange }) => {
+const HourSelector = ({ value, onChange, onReady }) => {
     const angleIndex = ((value > 12) ? (value - 12) : value);
     const r1 = 125;
     const r2 = 80;
@@ -24,7 +24,7 @@ const HourSelector = ({ value, onChange }) => {
         return plus12 + (negate(Math.round((angle - 2*Math.PI) * 12 / 360))) % 12;
     }
     return (
-        <Clock onCoord={({ angle, radius }) => (onChange(getHourFromAngle(angle, radius)))}>
+        <Clock onReady={onReady} onCoord={({ angle, radius }) => (onChange(getHourFromAngle(angle, radius)))}>
             <Arrow {...{angleIndex, angleDiv: 12, r: (value < 12) ? r1 : r2}} />
             {hours12.map((value, angleIndex) => <Digit {...{value, angleIndex, angleDiv: 12, key: value, r: r1 }} />)}
             {hours24.map((value, angleIndex) => <Digit {...{value, angleIndex, angleDiv: 12, key: value, r: r2 }} />)}

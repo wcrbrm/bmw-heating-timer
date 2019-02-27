@@ -62,6 +62,16 @@ class HoursOfDay extends React.Component {
     stopEditing = () => {
         this.setState({ editing: '' });
     }
+    onChangeHour = () => {
+        setTimeout(() => {
+            this.setState({ editing: 'minute' });
+        }, 200);
+    }
+    onChangeMinute = () => {
+        setTimeout(() => {
+            this.stopEditing();
+        }, 200);
+    }
     render() {
         const { enabled, value, onChange } = this.props;
         const hour = value[0];
@@ -108,10 +118,16 @@ class HoursOfDay extends React.Component {
                 </div>
                 
                 {(editing === 'hour' ? (
-                    <HourSelector value={hour} onChange={v => onChange([v, minute])} />
+                    <HourSelector 
+                        value={hour} onReady={this.onChangeHour}
+                        onChange={v => onChange([v, minute])}
+                        />
                 ): false)}
                 {(editing === 'minute' ? (
-                    <MinuteSelector value={minute} onChange={v => onChange([hour, v])} />
+                    <MinuteSelector
+                        value={minute} onReady={this.onChangeMinute}
+                        onChange={v => onChange([hour, v])}   
+                        />
                 ): false)}
             </ActiveWrapper>
         )

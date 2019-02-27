@@ -20,6 +20,7 @@ export class Clock extends React.Component {
     }
     stop = () => {
         this.setState({ selecting: false });
+        if (typeof this.props.onReady === 'function') this.props.onReady()
     }
     // TODO: mouse move and touch move should be replaced with attached event listener
     render() {
