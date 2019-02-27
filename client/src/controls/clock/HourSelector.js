@@ -1,5 +1,6 @@
 import React from 'react';
 import { Clock, Arrow, Digit } from './Clock';
+import { Numeric } from './../shortcuts/';
 
 const hours12 = [
     "12", "1", "2", "3", "4", "5", 
@@ -25,6 +26,7 @@ const HourSelector = ({ value, onChange, onReady }) => {
     }
     return (
         <Clock onReady={onReady} onCoord={({ angle, radius }) => (onChange(getHourFromAngle(angle, radius)))}>
+            <Numeric {...{value, onChange}} max={24} />
             <Arrow {...{angleIndex, angleDiv: 12, r: (value < 12) ? r1 : r2}} />
             {hours12.map((value, angleIndex) => <Digit {...{value, angleIndex, angleDiv: 12, key: value, r: r1 }} />)}
             {hours24.map((value, angleIndex) => <Digit {...{value, angleIndex, angleDiv: 12, key: value, r: r2 }} />)}

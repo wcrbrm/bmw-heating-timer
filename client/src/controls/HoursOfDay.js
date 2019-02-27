@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import Esc from './Esc';
-import Enter from './Enter';
+import { Enter, Esc } from './shortcuts/';
 import { HourSelector, MinuteSelector } from './clock';
 
 const ActiveWrapper = styled.div`
@@ -101,7 +100,6 @@ class HoursOfDay extends React.Component {
         return (
             <ActiveWrapper>
                 <Esc onPress={() => this.stopEditing()} />
-                <Enter onPress={() => this.stopEditing()} />
                 <div onClick={() => this.stopEditing()}>
                     <ModeButton 
                         className={editing === 'hour' ? 'active': ''} 
@@ -118,16 +116,22 @@ class HoursOfDay extends React.Component {
                 </div>
                 
                 {(editing === 'hour' ? (
-                    <HourSelector 
-                        value={hour} onReady={this.onChangeHour}
-                        onChange={v => onChange([v, minute])}
-                        />
+                    <div>
+                        <Enter onPress={this.onChangeHour} />,
+                        <HourSelector 
+                            value={hour} onReady={this.onChangeHour}
+                            onChange={v => onChange([v, minute])}
+                            />
+                    </div>
                 ): false)}
                 {(editing === 'minute' ? (
-                    <MinuteSelector
-                        value={minute} onReady={this.onChangeMinute}
-                        onChange={v => onChange([hour, v])}   
-                        />
+                    <div>
+                        <Enter onPress={this.onChangeMinute} />,
+                        <MinuteSelector
+                            value={minute} onReady={this.onChangeMinute}
+                            onChange={v => onChange([hour, v])}   
+                            />
+                    </div>
                 ): false)}
             </ActiveWrapper>
         )
